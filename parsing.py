@@ -67,13 +67,13 @@ def getData():
         "Deuterium" : 2
     }
     xtalStruct = {
-        "ffc" : 1, "bcc" : 0
+        "fcc" : 1, "bcc" : 0, "hcp" : 2
     }
 
     data["Method"] = data["Method"].str.strip().map(method_to_numeric)
     data["Isotope"] = data["Isotope"].str.strip().str.capitalize().map(isotope)
     data["Temperature"] = data["Temperature"].apply(avgRange)
-    data["CrystalStruct"] = data["CrystalStruct"].str.strip().str.capitalize().map(xtalStruct)
+    data["CrystalStruct"] = data["CrystalStruct"].str.strip().map(xtalStruct)
     print(data.head())
 
     data.to_csv("output.csv", index=False)
